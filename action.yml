@@ -4,13 +4,11 @@ inputs:
   deploy_key:
     description: 'Deploy key used to deploy to GitHub Pages'
     required: true
-    default: DEPLOY_KEY
   files:
-    description: 'The files that should be compiled'
+    description: 'Space-separated list of files that should be compiled'
     required: true
-    default:
   handouts:
-    description: 'The Beamer files that handouts should be generated for'
+    description: 'Space-separated list of Beamer files that handouts should be generated for'
     required: false
     default:
   publish_dir:
