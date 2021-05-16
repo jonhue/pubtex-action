@@ -8,11 +8,11 @@ inputs:
   files:
     description: 'The files that should be compiled'
     required: true
-    default: []
+    default:
   handouts:
     description: 'The Beamer files that handouts should be generated for'
     required: false
-    default: []
+    default:
   publish_dir:
     description: 'The directory that should be published with GitHub Pages'
     required: false
