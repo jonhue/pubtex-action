@@ -1,0 +1,48 @@
+name: 'PubTeX'
+description: 'A GitHub action to publicly host LaTeX files on GitHub Pages'
+inputs:
+  deploy_key:
+    description: 'Deploy key used to deploy to GitHub Pages'
+    required: true
+    default: DEPLOY_KEY
+  files:
+    description: 'The files that should be compiled'
+    required: true
+    default: []
+  handouts:
+    description: 'The Beamer files that handouts should be generated for'
+    required: false
+    default: []
+  publish_dir:
+    description: 'The directory that should be published with GitHub Pages'
+    required: false
+    default: dist
+  index_page:
+    description: 'Path to the Markdown file that should be the main page'
+    required: false
+    default: README.md
+runs:
+  using: "composite"
+  steps:
+    - name: Generate handouts
+      run: ${{ github.action_path }}/generate_handouts.sh ${{ inputs.handouts }}
+      shell: bash
+    - name: Compile LaTeX sources
+      uses: xu-cheng/latex-action@2.2.1
+      with:
+        pre_compile: tlmgr update --self && tlmgr update --all
+        root_file: ${{ inputs.files }}
+    - name: Move PDFs
+      run: mv ./*.pdf ${{ inputs.publish_dir }}
+      shell: bash
+    - name: Move index page
+      run: cp ${{ inputs.index_page }} ${{ inputs.publish_dir }}/index.md
+      shell: bash
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3.8.0
+      with:
+        deploy_key: ${{ inputs.deploy_key }}
+        publish_dir: ${{ inputs.publish_dir }}
+        allow_empty_commit: true
+        force_orphan: true
+        enable_jekyll: true
