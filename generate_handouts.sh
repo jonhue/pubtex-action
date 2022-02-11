@@ -10,11 +10,16 @@ do
   cp $slides $handout
   sed -i "1s/.*/\\\\documentclass\[handout\]\{beamer\}/" $handout
 
-  handouts=$handouts$'\n'$handout
+  if [[ $handouts = "" ]]
+  then
+    handouts=handout
+  else
+    handouts=$handouts$'\n'$handout
+  fi
 done
 
-# trim whitespace
-handouts=$handouts | xargs
+# # trim whitespace
+# handouts=$handouts | xargs
 
 echo "$handouts"
-echo ::set-output name=handouts::examples/slides_handout.tex
+echo ::set-output name=handouts::$handouts
