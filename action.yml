@@ -32,7 +32,6 @@ runs:
       shell: bash
     - name: Debug
       run: |
-        ls -la
         cd examples
         ls -la
       shell: bash
@@ -42,7 +41,7 @@ runs:
         pre_compile: tlmgr update --self && tlmgr update --all
         root_file: |
           ${{ inputs.files }}
-          ${{ steps.generate-handouts.outputs.handouts }}
+          examples/slides_handout.tex
     - name: Move PDFs
       run: mv ./*.pdf ${{ inputs.publish_dir }}
       shell: bash

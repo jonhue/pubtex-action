@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# ${{ steps.generate-handouts.outputs.handouts }}
 handouts=""
 
 for slides in "$@"
@@ -12,7 +12,7 @@ do
   cp $slides $handout
   sed -i "1s/.*/\\\\documentclass\[handout\]\{beamer\}/" $handout
 
-  handouts="$handouts $(pwd)/$handout"
+  handouts="$handout"
 done
 
 echo $handouts
