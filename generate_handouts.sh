@@ -1,8 +1,5 @@
 #!/bin/bash
 
-pwd
-echo $GITHUB_ENV
-
 handouts=""
 
 for slides in "$@"
@@ -13,7 +10,8 @@ do
   cp $slides $handout
   sed -i "1s/.*/\\\\documentclass\[handout\]\{beamer\}/" $handout
 
-  handouts="$handouts $handout"
+  handouts="$handouts $(pwd)/$handout"
 done
 
+echo $handouts
 echo ::set-output name=handouts::$handouts
