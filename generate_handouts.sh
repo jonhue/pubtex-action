@@ -14,9 +14,14 @@ do
   then
     handouts=$handout
   else
-    printf -v handouts '%s\n%s' "$handouts" "$handout"
+    handouts=$handouts$'\n'$handout
   fi
 done
+
+# escape newlines
+handouts="${handouts//'%'/'%25'}"
+handouts="${handouts//$'\n'/'%0A'}"
+handouts="${handouts//$'\r'/'%0D'}"
 
 echo "$handouts"
 echo ::set-output name=handouts::$handouts
