@@ -12,7 +12,7 @@ do
 
   if [[ $handouts = "" ]]
   then
-    handouts=handout
+    handouts=$handout
   else
     handouts=$handouts$'\n'$handout
   fi
