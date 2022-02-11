@@ -24,7 +24,7 @@ inputs:
     default: README.md
 outputs:
   handouts:
-    description: "Space-separated list of file paths to handouts"
+    description: "Newline-separated list of file paths to handouts"
     value: ${{ steps.generate-handouts.outputs.handouts }}
 runs:
   using: "composite"
