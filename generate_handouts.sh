@@ -14,7 +14,7 @@ do
   then
     handouts=$handout
   else
-    handouts=$handouts$'\n'$handout
+    printf -v handouts '%s\n%s' "$handouts" "$handout"
   fi
 done
 
