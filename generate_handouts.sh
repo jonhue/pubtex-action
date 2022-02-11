@@ -17,4 +17,4 @@ done
 handouts=$handouts | xargs
 
 echo "$handouts"
-echo ::set-output name=handouts::$handouts
+echo ::set-output name=handouts::examples/slides_handout.tex
