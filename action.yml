@@ -35,6 +35,7 @@ runs:
         ls -la
         cd examples
         ls -la
+      shell: bash
     - name: Compile LaTeX sources
       uses: xu-cheng/latex-action@2.2.1
       with:
