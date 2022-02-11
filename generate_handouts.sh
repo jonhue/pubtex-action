@@ -14,4 +14,4 @@ do
 done
 
 echo $handouts
-echo HANDOUTS=$handouts >> "$GITHUB_ENV"
+echo handouts=$handouts >> "$GITHUB_ENV"
