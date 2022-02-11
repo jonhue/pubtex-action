@@ -10,7 +10,7 @@ do
   cp $slides $handout
   sed -i "1s/.*/\\\\documentclass\[handout\]\{beamer\}/" $handout
 
-  handouts="$handouts\n$handout"
+  handouts=$handouts$'\n'$handout
 done
 
 echo $handouts
