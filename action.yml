@@ -31,7 +31,7 @@ runs:
         pre_compile: tlmgr update --self && tlmgr update --all
         root_file: |
           ${{ inputs.files }}
-          ${{ env.handouts }}
+          ${{ env.HANDOUTS }}
     - name: Move PDFs
       run: mv ./*.pdf ${{ inputs.publish_dir }}
       shell: bash
