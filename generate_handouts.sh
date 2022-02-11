@@ -1,5 +1,8 @@
 #!/bin/bash
 
+pwd
+echo $GITHUB_ENV
+
 handouts=""
 
 for slides in "$@"
