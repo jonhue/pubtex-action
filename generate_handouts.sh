@@ -6,7 +6,7 @@ for slides in "$@"
 do
   echo "generating handout for $slides"
 
-  echo $slides
+  echo $(cat $slides)
 
   handout=${slides:0:-4}_handout.tex
   cp $slides $handout
