@@ -16,5 +16,4 @@ do
   handouts="$handouts $handout"
 done
 
-echo $handouts
-echo handouts=$handouts >> "$GITHUB_ENV"
+echo ::set-output name=handouts::$handouts

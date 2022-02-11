@@ -19,12 +19,15 @@ inputs:
     description: 'Path to the Markdown file that should be the main page'
     required: false
     default: README.md
+outputs:
+  handouts:
+    description: "Space-separated list of file paths to handouts"
+    value: ${{ steps.generate-handouts.outputs.handouts }}
 runs:
   using: "composite"
-  env:
-    handouts: ""
   steps:
-    - name: Generate handouts
+    - id: generate-handouts
+      name: Generate handouts
       run: sudo bash ${{ github.action_path }}/generate_handouts.sh ${{ inputs.handouts }}
       shell: bash
     - name: Compile LaTeX sources
@@ -33,7 +36,7 @@ runs:
         pre_compile: tlmgr update --self && tlmgr update --all
         root_file: |
           ${{ inputs.files }}
-          ${{ env.handouts }}
+          ${{ steps.generate-handouts.outputs.handouts }}
     - name: Move PDFs
       run: mv ./*.pdf ${{ inputs.publish_dir }}
       shell: bash
