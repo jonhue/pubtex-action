@@ -30,6 +30,11 @@ runs:
       name: Generate handouts
       run: sudo bash ${{ github.action_path }}/generate_handouts.sh ${{ inputs.handouts }}
       shell: bash
+    - name: Debug
+      run: |
+        ls -la
+        cd examples
+        ls -la
     - name: Compile LaTeX sources
       uses: xu-cheng/latex-action@2.2.1
       with:
