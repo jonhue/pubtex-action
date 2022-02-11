@@ -6,7 +6,7 @@ for slides in "$@"
 do
   echo "generating handout for $slides"
 
-  handout=${slides:0:-4}_handout.tex
+  handout=${slides%.tex}_handout.tex
   sudo cp $slides $handout
   sudo sed -i "1s/.*/\\\\documentclass\[handout\]\{beamer\}/" $handout
 
