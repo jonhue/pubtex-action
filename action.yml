@@ -1,5 +1,7 @@
 name: 'PubTeX'
 description: 'A GitHub action to publicly host LaTeX files on GitHub Pages'
+icon: file-text
+color: green
 inputs:
   deploy_key:
     description: 'Deploy key used to deploy to GitHub Pages'
