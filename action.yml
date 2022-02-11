@@ -30,18 +30,13 @@ runs:
       name: Generate handouts
       run: sudo bash ${{ github.action_path }}/generate_handouts.sh ${{ inputs.handouts }}
       shell: bash
-    - name: Debug
-      run: |
-        cd examples
-        ls -la
-      shell: bash
     - name: Compile LaTeX sources
       uses: xu-cheng/latex-action@2.2.1
       with:
         pre_compile: tlmgr update --self && tlmgr update --all
         root_file: |
-          examples/slides_handout.tex
           ${{ inputs.files }}
+          ${{ steps.generate-handouts.outputs.handouts }}
     - name: Move PDFs
       run: mv ./*.pdf ${{ inputs.publish_dir }}
       shell: bash
