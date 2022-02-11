@@ -2,7 +2,7 @@
 
 handouts=""
 
-for slides in "$@"
+for slides in xargs $1
 do
   echo "generating handout for $slides"
 
