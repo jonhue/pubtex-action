@@ -13,5 +13,5 @@ do
   printf -v handouts $handouts'\n'$handout
 done
 
-echo $handouts
+echo "$handouts"
 echo ::set-output name=handouts::$handouts
