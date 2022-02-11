@@ -29,7 +29,9 @@ runs:
       uses: xu-cheng/latex-action@2.2.1
       with:
         pre_compile: tlmgr update --self && tlmgr update --all
-        root_file: ${{ inputs.files }}
+        root_file: |
+          ${{ inputs.files }}
+          ${{ env.handouts }}
     - name: Move PDFs
       run: mv ./*.pdf ${{ inputs.publish_dir }}
       shell: bash
