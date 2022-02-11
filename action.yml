@@ -23,7 +23,7 @@ runs:
   using: "composite"
   steps:
     - name: Generate handouts
-      run: ${{ github.action_path }}/generate_handouts.sh ${{ inputs.handouts }}
+      run: sudo ${{ github.action_path }}/generate_handouts.sh ${{ inputs.handouts }}
       shell: bash
     - name: Compile LaTeX sources
       uses: xu-cheng/latex-action@2.2.1
