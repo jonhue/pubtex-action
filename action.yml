@@ -38,8 +38,8 @@ runs:
       with:
         pre_compile: tlmgr update --self && tlmgr update --all
         root_file: |
-          ${{ inputs.files }}
           ${{ steps.generate-handouts.outputs.handouts }}
+          ${{ inputs.files }}
     - name: Move PDFs
       run: mv ./*.pdf ${{ inputs.publish_dir }}
       shell: bash
