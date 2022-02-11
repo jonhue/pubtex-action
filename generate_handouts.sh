@@ -13,5 +13,8 @@ do
   handouts=$handouts$'\n'$handout
 done
 
+# trim whitespace
+handouts=$handouts | xargs
+
 echo "$handouts"
 echo ::set-output name=handouts::$handouts
